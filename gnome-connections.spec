@@ -1,12 +1,12 @@
 Summary:	Remote desktop client for the GNOME desktop environment
 Summary(pl.UTF-8):	Klient zdalnego pulpitu dla środowiska graficznego GNOME
 Name:		gnome-connections
-Version:	3.38.0
+Version:	3.38.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/connections/3.38/connections-%{version}.tar.xz
-# Source0-md5:	3d6d331c06953fc08d0dbe045fd60d2d
+# Source0-md5:	cd3c02b2d9eed46b498521d09449a57c
 URL:		https://wiki.gnome.org/Apps/Connections
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50
