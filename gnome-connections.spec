@@ -1,12 +1,12 @@
 Summary:	Remote desktop client for the GNOME desktop environment
 Summary(pl.UTF-8):	Klient zdalnego pulpitu dla środowiska graficznego GNOME
 Name:		gnome-connections
-Version:	3.38.1
+Version:	40.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/connections/3.38/connections-%{version}.tar.xz
-# Source0-md5:	cd3c02b2d9eed46b498521d09449a57c
+Source0:	https://download.gnome.org/sources/gnome-connections/40/%{name}-%{version}.tar.xz
+# Source0-md5:	a7cc48024da8de7f3f07e937892ba7f8
 URL:		https://wiki.gnome.org/Apps/Connections
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50
@@ -41,7 +41,7 @@ Klient zdalnego pulpitu dla środowiska graficznego GNOME. Celem jest
 zastąpienie Vinagre.
 
 %prep
-%setup -q -n connections-%{version}
+%setup -q
 
 %build
 %meson build
@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
 
-%find_lang connections
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -70,15 +70,14 @@ rm -rf $RPM_BUILD_ROOT
 %update_mime_database
 %update_desktop_database
 
-%files -f connections.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc NEWS README.md
-%attr(755,root,root) %{_bindir}/connections
+%attr(755,root,root) %{_bindir}/gnome-connections
 %{_datadir}/appdata/org.gnome.Connections.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Connections.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Connections.gschema.xml
 %{_datadir}/mime/packages/org.gnome.Connections.xml
 %{_desktopdir}/org.gnome.Connections.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Connections.svg
-%{_iconsdir}/hicolor/scalable/apps/org.gnome.Connections.Devel.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Connections-symbolic.svg
