@@ -25,6 +25,7 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 %{?with_system_gtk_frdp:BuildRequires:	vala-gtk-frdp >= 0.1}
+BuildRequires:	vala-gtk3-vnc >= 0.4.5
 BuildRequires:	vala-libhandy1 >= 1.0.0
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
