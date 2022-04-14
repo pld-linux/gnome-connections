@@ -5,19 +5,21 @@
 Summary:	Remote desktop client for the GNOME desktop environment
 Summary(pl.UTF-8):	Klient zdalnego pulpitu dla środowiska graficznego GNOME
 Name:		gnome-connections
-Version:	41.2
+Version:	42.1.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/gnome-connections/41/%{name}-%{version}.tar.xz
-# Source0-md5:	5d87f4a86c3d600b8ea18e40e51e4ff9
+Source0:	https://download.gnome.org/sources/gnome-connections/42/%{name}-%{version}.tar.xz
+# Source0-md5:	eb20988f381674c4c7fd9c3a8081dcf4
 URL:		https://wiki.gnome.org/Apps/Connections
+%{!?with_system_gtk_frdp:BuildRequires:	freerdp2-devel >= 2.0.0}
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50
 %{?with_system_gtk_frdp:BuildRequires:	gtk-frdp-devel >= 0.1}
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk3-vnc-devel >= 0.4.5
-BuildRequires:	libhandy1-devel >= 1.0.0
+BuildRequires:	libhandy1-devel >= 1.2.0
+BuildRequires:	libsecret-devel
 BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
@@ -26,7 +28,8 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 %{?with_system_gtk_frdp:BuildRequires:	vala-gtk-frdp >= 0.1}
 BuildRequires:	vala-gtk3-vnc >= 0.4.5
-BuildRequires:	vala-libhandy1 >= 1.0.0
+BuildRequires:	vala-libhandy1 >= 1.2.0
+BuildRequires:	vala-libsecret
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.50
@@ -35,6 +38,7 @@ Requires:	glib2 >= 1:2.50
 Requires:	gtk+3 >= 3.22
 Requires:	gtk3-vnc >= 0.4.5
 Requires:	hicolor-icon-theme
+Requires:	libhandy1 >= 1.2.0
 Requires:	libxml2 >= 1:2.7.8
 Requires:	shared-mime-info
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
