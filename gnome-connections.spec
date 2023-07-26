@@ -5,12 +5,12 @@
 Summary:	Remote desktop client for the GNOME desktop environment
 Summary(pl.UTF-8):	Klient zdalnego pulpitu dla środowiska graficznego GNOME
 Name:		gnome-connections
-Version:	43.0
+Version:	44.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/gnome-connections/43/%{name}-%{version}.tar.xz
-# Source0-md5:	25bfbc5ca13ff5acaf83ac05606c14b6
+Source0:	https://download.gnome.org/sources/gnome-connections/44/%{name}-%{version}.tar.xz
+# Source0-md5:	f98474aa91ab30a071863b4bdc95da46
 URL:		https://wiki.gnome.org/Apps/Connections
 %{!?with_system_gtk_frdp:BuildRequires:	freerdp2-devel >= 2.0.0}
 BuildRequires:	gettext-tools
@@ -22,7 +22,7 @@ BuildRequires:	libgvnc-devel >= 0.4.5
 BuildRequires:	libhandy1-devel >= 1.6.0
 BuildRequires:	libsecret-devel
 BuildRequires:	libxml2-devel >= 1:2.7.8
-BuildRequires:	meson >= 0.50.0
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
@@ -72,8 +72,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{without system_gtk_frdp}
 %{__rm} -r $RPM_BUILD_ROOT%{_includedir}/gnome-connections/gtk-frdp
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-connections/pkgconfig/gtk-frdp-0.1.pc
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.*
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-connections/pkgconfig/gtk-frdp-0.2.pc
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/gnome-connections/vapi/gtk-frdp-0.2.*
 %endif
 
 %find_lang %{name} --with-gnome
@@ -106,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Connections-symbolic.svg
 %if %{without system_gtk_frdp}
 %dir %{_libdir}/gnome-connections
-%attr(755,root,root) %{_libdir}/gnome-connections/libgtk-frdp-0.1.so
+%attr(755,root,root) %{_libdir}/gnome-connections/libgtk-frdp-0.2.so
 %{_libdir}/gnome-connections/girepository-1.0
 %dir %{_datadir}/gnome-connections
 %{_datadir}/gnome-connections/gir-1.0
