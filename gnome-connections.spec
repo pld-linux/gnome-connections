@@ -5,19 +5,21 @@
 Summary:	Remote desktop client for the GNOME desktop environment
 Summary(pl.UTF-8):	Klient zdalnego pulpitu dla środowiska graficznego GNOME
 Name:		gnome-connections
-Version:	45.0
+Version:	46.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Networking
-Source0:	https://download.gnome.org/sources/gnome-connections/45/%{name}-%{version}.tar.xz
-# Source0-md5:	f0006afa6bdf283179eb77521060e8ee
+Source0:	https://download.gnome.org/sources/gnome-connections/46/%{name}-%{version}.tar.xz
+# Source0-md5:	dcd819bfb15af4652842fb6b91fb9c7f
 URL:		https://wiki.gnome.org/Apps/Connections
-%{!?with_system_gtk_frdp:BuildRequires:	freerdp2-devel >= 2.0.0}
+# freerdp3 preferred, with fallback to freerdp2
+%{!?with_system_gtk_frdp:BuildRequires:	freerdp3-devel >= 3.0.0}
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50
-%{?with_system_gtk_frdp:BuildRequires:	gtk-frdp-devel >= 0.1}
+%{?with_system_gtk_frdp:BuildRequires:	gtk-frdp-devel >= 0.2}
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk3-vnc-devel >= 0.4.5
+%{!?with_system_gtk_frdp:BuildRequires:	libfuse3-devel >= 3.9.1}
 BuildRequires:	libgvnc-devel >= 0.4.5
 BuildRequires:	libhandy1-devel >= 1.6.0
 BuildRequires:	libsecret-devel
@@ -25,9 +27,10 @@ BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
-%{?with_system_gtk_frdp:BuildRequires:	vala-gtk-frdp >= 0.1}
+%{?with_system_gtk_frdp:BuildRequires:	vala-gtk-frdp >= 0.2}
 BuildRequires:	vala-gtk3-vnc >= 0.4.5
 BuildRequires:	vala-libhandy1 >= 1.6.0
 BuildRequires:	vala-libsecret
@@ -57,7 +60,7 @@ zastąpienie Vinagre.
 %setup -q
 
 %if %{without system_gtk_frdp}
-%{__sed} -i -e '/dependency.*gtk-frdp-0.1/ s/gtk-frdp-0.1/gtk-frdp-nonexistent/' src/meson.build
+%{__sed} -i -e '/dependency.*gtk-frdp-0.2/ s/gtk-frdp-0.2/gtk-frdp-nonexistent/' src/meson.build
 %endif
 
 %build
