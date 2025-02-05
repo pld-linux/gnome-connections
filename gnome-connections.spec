@@ -26,7 +26,7 @@ BuildRequires:	libsecret-devel
 BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
@@ -64,14 +64,14 @@ zastąpienie Vinagre.
 %endif
 
 %build
-%meson build
+%meson
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{without system_gtk_frdp}
 %{__rm} -r $RPM_BUILD_ROOT%{_includedir}/gnome-connections/gtk-frdp
